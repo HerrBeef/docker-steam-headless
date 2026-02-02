@@ -1,5 +1,4 @@
 FROM ubuntu:25.04
-LABEL maintainer="rtrigoso (https://renfoc.us)"
 
 # Update package repos
 ARG DEBIAN_FRONTEND=noninteractive
@@ -277,14 +276,7 @@ RUN \
         && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/vim.desktop \
         && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/thunar-settings.desktop \
         && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/thunar.desktop \
-        # this line comments out a file not found on ubuntu 25.04, since moving pipewire
-        # && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/pavucontrol.desktop \
         && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/x11vnc.desktop \
-        # && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/display-im6.q16.desktop \
-        # These lines are commented out because this image runs ubuntu 25.04, and these are named specifically for Debain
-        # && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/debian-xterm.desktop \
-        # && sed -i '/[Desktop Entry]/a\NoDisplay=true' /usr/share/applications/debian-uxterm.desktop \
-        # Force these apps to be "System" Apps rather than "Categories=System;Utility;Core;GTK;Filesystem;"
         && sed -i 's/^Categories=.*$/Categories=System;/' /usr/share/applications/xfce4-appfinder.desktop \
         && sed -i 's/^Categories=.*$/Categories=System;/' /usr/share/applications/thunar-bulk-rename.desktop \
         && sed -i 's/^Categories=.*$/Categories=System;/' /usr/share/applications/org.gnome.gedit.desktop \
